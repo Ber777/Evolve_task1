@@ -1,0 +1,27 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+int main()
+{
+	double P = 0;
+	double i = 0;
+	double j = 0;
+	std::vector <double> vecP;
+	for(int y=1; y <=51; y++)
+	{
+		for(int x=0; x<=26; x++)
+		{
+			if((x<=y) && (y <= 26+x))
+			{
+				i = y;
+				j = x;
+				P = 0.5*((j/i)+((26-j)/(52-i)));
+				std::cout << "X = " << j << " Y = " << i << " P = " << P << std::endl;
+				vecP.push_back(P);
+			}
+		}
+	}
+	auto minmax = std::minmax_element(vecP.begin(), vecP.end());
+	std::cout << "minimum element: " << *minmax.first << '\n';
+    std::cout << "maximum element: " << *minmax.second << '\n';
+}
